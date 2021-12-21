@@ -1,19 +1,19 @@
-require("dotenv").config()
-
 const express = require("express");
 const mercadopago = require("mercadopago");
 
-const MercadoPago = require("mercadopago");
+require("dotenv").config();
 
 const app = express();
 
+app.use(express.json())
+
 mercadopago.configure({
   sandbox: true, //Desenvolvimento
-  access_token: process.env.TOKEN
+  access_token: process.env.TOKEN,
 });
 
 app.get("/", (req, res) => {
-  res.send("Ola mundo");
+  res.json("Ola mundo");
 });
 
 app.get("/pagar", async (req, res) => {
@@ -34,7 +34,7 @@ app.get("/pagar", async (req, res) => {
     external_reference: "" + Date.now(),
   };
   try {
-    const pagamento = await MercadoPago.preferences.create(dados);
+    const pagamento = await mercadopago.preferences.create(dados);
     console.log(pagamento);
 
     return res.redirect(pagamento.body.init_point);
@@ -43,6 +43,6 @@ app.get("/pagar", async (req, res) => {
   }
 });
 
-app.listen(8080, (req, res) => {
+app.listen(process.env.PORT || 8080, (req, res) => {
   console.log("App is running");
 });
