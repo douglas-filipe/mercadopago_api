@@ -60,6 +60,7 @@ app.post("/not", (req, res) => {
       .then((data) => {
         const pagamento = data.body.results[0]
         console.log(data);
+        console.log(pagamento)
       })
       .catch((err) => {
         console.log(err);
