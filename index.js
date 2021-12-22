@@ -58,7 +58,7 @@ app.post("/not", (req, res) => {
         qs: filter,
       })
       .then((data) => {
-        //console.log(data.body.results[0]);
+        const pagamento = data.body.results[0]
         console.log(data);
       })
       .catch((err) => {
@@ -68,6 +68,6 @@ app.post("/not", (req, res) => {
   res.send("Ok");
 });
 
-app.listen(process.env.PORT || 8080, (req, res) => {
+app.listen(process.env.PORT || 443, (req, res) => {
   console.log("App is running");
 });
