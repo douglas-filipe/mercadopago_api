@@ -1,6 +1,7 @@
 const express = require("express");
 const mercadopago = require("mercadopago");
 const cors = require("cors");
+const nodemailer = require("nodemailer");
 
 require("dotenv").config();
 
@@ -47,6 +48,7 @@ app.get("/pagar", async (req, res) => {
 });
 
 app.post("/not", (req, res) => {
+  
   const id = req.query.id;
   setTimeout(() => {
     const filter = {
@@ -58,14 +60,40 @@ app.post("/not", (req, res) => {
         qs: filter,
       })
       .then((data) => {
-        const pagamento = data.body.results[0]
+        const pagamento = data.body.results[0];
         console.log(data);
-        console.log(pagamento)
+        console.log(pagamento);
+        const remetente = nodemailer.createTransport({
+          host: "smtp.gmail.com",
+          service: "gmail",
+          port: 587,
+          secure: true,
+          auth: {
+            user: process.env.EMAIL,
+            pass: process.env.EMAIL_PASS,
+          },
+        });
+      
+        const emailSend = {
+          from: process.env.EMAIL,
+          to: "douglasfelipe.net77@gmail.com",
+          text: `${data.body.results[0]}`
+        }
+
+        remetente.sendMail(emailSend, (error, info) => {
+          if(error) {
+            console.log(error);
+          }else{
+            console.log("Enviado")
+            res.json("Ok")
+          }
+        })
+
       })
       .catch((err) => {
         console.log(err);
       });
-  }, 20000);
+  }, 2000);
   res.send("Ok");
 });
 
