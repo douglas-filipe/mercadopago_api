@@ -59,7 +59,7 @@ app.post("/not", (req, res) => {
       })
       .then((data) => {
         data.body.results[0];
-        console.log("data");
+        console.log(data);
       })
       .catch((err) => {
         console.log(err);
