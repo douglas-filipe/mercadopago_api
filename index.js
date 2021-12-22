@@ -58,7 +58,7 @@ app.post("/not", (req, res) => {
         qs: filter,
       })
       .then((data) => {
-        data.body.results[0];
+        //console.log(data.body.results[0]);
         console.log(data);
       })
       .catch((err) => {
