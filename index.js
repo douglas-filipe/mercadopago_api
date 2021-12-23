@@ -63,7 +63,7 @@ app.post("/not", (req, res) => {
         const pagamento = data.body.results[0];
         console.log(data);
         console.log(pagamento);
-        const remetente = nodemailer.createTransport({
+        /*const remetente = nodemailer.createTransport({
           host: "smtp.gmail.com",
           service: "gmail",
           port: 587,
@@ -87,7 +87,7 @@ app.post("/not", (req, res) => {
             console.log("Enviado")
             res.json("Ok")
           }
-        })
+        })*/
 
       })
       .catch((err) => {
