@@ -97,6 +97,6 @@ app.post("/not", (req, res) => {
   res.send("Ok");
 });
 
-app.listen(process.env.PORT || 8080, (req, res) => {
+app.listen(process.env.PORT || 80, (req, res) => {
   console.log("App is running");
 });
