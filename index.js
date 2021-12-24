@@ -67,7 +67,7 @@ app.post("/not", (req, res) => {
       })
       .then((data) => {
         const pagamento = data.body.results[0];
-        console.log(data.body.results);
+        console.log(data.body.results[0]);
         //console.log(pagamento.external_reference);
         //console.log(pagamento.status); //approved
         /*const remetente = nodemailer.createTransport({
