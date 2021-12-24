@@ -26,20 +26,12 @@ app.get("/pagar", async (req, res) => {
     items: [
       {
         id: "" + Date.now(),
-        title: "Abóbora",
-        quantity: 1,
-        currency_id: "BRL",
-        unit_price: parseFloat(10),
-      },
-      {
-        id: "" + Date.now(),
         title: "Melancia",
-        quantity: 1,
+        quantity: 2,
         currency_id: "BRL",
         unit_price: parseFloat(10),
       },
     ],
-
     payer: {
       email: "douglas@gmail.com",
     },
