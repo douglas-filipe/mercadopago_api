@@ -48,7 +48,6 @@ app.get("/pagar", async (req, res) => {
 });
 
 app.post("/not", (req, res) => {
-  
   const id = req.query.id;
   setTimeout(() => {
     const filter = {
@@ -61,8 +60,8 @@ app.post("/not", (req, res) => {
       })
       .then((data) => {
         const pagamento = data.body.results[0];
-        console.log(data);
-        console.log(pagamento);
+        console.log(pagamento.external_reference);
+        console.log(pagamento.status); //approved
         /*const remetente = nodemailer.createTransport({
           host: "smtp.gmail.com",
           service: "gmail",
@@ -88,7 +87,6 @@ app.post("/not", (req, res) => {
             res.json("Ok")
           }
         })*/
-
       })
       .catch((err) => {
         console.log(err);
