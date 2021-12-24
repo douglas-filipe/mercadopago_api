@@ -26,7 +26,7 @@ app.get("/pagar", async (req, res) => {
     items: [
       {
         id: "" + Date.now(),
-        title: "Melão",
+        title: "Abacate",
         quantity: 2,
         currency_id: "BRL",
         unit_price: parseFloat(10),
