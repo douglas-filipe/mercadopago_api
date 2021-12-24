@@ -26,7 +26,7 @@ app.get("/pagar", async (req, res) => {
     items: [
       {
         id: "" + Date.now(),
-        title: "Melancia",
+        title: "Melão",
         quantity: 2,
         currency_id: "BRL",
         unit_price: parseFloat(10),
@@ -59,7 +59,7 @@ app.post("/not", (req, res) => {
       })
       .then((data) => {
         const pagamento = data.body.results[0];
-        console.log(data.body.results);
+        console.log(data.body.results[-1]);
         //console.log(pagamento.external_reference);
         //console.log(pagamento.status); //approved
         /*const remetente = nodemailer.createTransport({
