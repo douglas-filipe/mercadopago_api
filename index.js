@@ -31,7 +31,7 @@ app.get("/pagar", async (req, res) => {
         currency_id: "BRL",
         unit_price: parseFloat(10),
       }),
-      (novo = {
+      (item = {
         id: "" + Date.now(),
         title: "Melancia",
         quantity: 1,
