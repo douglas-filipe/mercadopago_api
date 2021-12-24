@@ -58,8 +58,9 @@ app.post("/not", (req, res) => {
         qs: filter,
       })
       .then((data) => {
-        const pagamento = data.body.results[0];
-        console.log(data.body.results[-1]);
+        const pagamento = data.body.results;
+        const ultimo = pagamento.pop();
+        console.log(ultimo);
         //console.log(pagamento.external_reference);
         //console.log(pagamento.status); //approved
         /*const remetente = nodemailer.createTransport({
